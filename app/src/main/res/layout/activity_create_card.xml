@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".ListCardActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cadastro de Cards"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"
+        android:paddingBottom="100dp"
+        android:layout_centerHorizontal="true"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title">
+
+        <EditText
+            android:id="@+id/cardName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_margin="10dp"
+            android:inputType="textPersonName"
+            android:text=""
+            android:hint="Nome da Card"/>
+
+        <EditText
+            android:id="@+id/numberMana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_margin="10dp"
+            android:inputType="number"
+            android:layout_below="@+id/cardName"
+            android:text=""
+            android:hint="Quantidade de Mana"/>
+
+        <EditText
+            android:id="@+id/cardType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/cardName"
+            android:layout_toRightOf="@+id/numberMana"
+            android:inputType="textPersonName"
+            android:text=""
+            android:hint="Tipo da Card"/>
+
+        <Button
+            android:id="@+id/cadastrarBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardType"
+            android:text="Cadastrar"
+            android:textColor="#fff"
+            android:layout_marginTop="50dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="#8943ef"/>
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
