@@ -13,8 +13,6 @@ import androidx.annotation.Nullable;
 import com.example.brcomboricagrid.R;
 import com.example.brcomboricagrid.models.Card;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class CardAdapter extends ArrayAdapter<Card> {

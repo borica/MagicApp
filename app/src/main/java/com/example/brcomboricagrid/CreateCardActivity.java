@@ -2,8 +2,6 @@ package com.example.brcomboricagrid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +17,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.brcomboricagrid.models.Card;
-import com.example.brcomboricagrid.service.CardService;
 import com.example.brcomboricagrid.util.AppConstants;
 import com.google.gson.Gson;
 
@@ -117,30 +114,19 @@ public class CreateCardActivity extends AppCompatActivity implements View.OnClic
             requestQueue.add(stringRequest);
 
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Favor inserir as informações obrigatórias! ",
-                    Toast.LENGTH_SHORT);
-
-            View viewToast = toast.getView();
-
-            //viewToast.setBackground(ColorDrawable(Color.BLACK));
-
-            toast.show();
+            Toast.makeText(CreateCardActivity.this, "Favor inserir as informações obrigatórias! ", Toast.LENGTH_LONG).show();
         }
     }
 
     private Boolean valid() {
         Boolean valid = true;
 
-        if(nomeCard.getText().toString().isEmpty() || nomeCard.getText().toString() == null) {
+        if(nomeCard.getText().toString().isEmpty() || nomeCard.getText().toString() == null)
             valid = false;
-        }
-        if(tipoCard.getText().toString().isEmpty() || tipoCard.getText().toString() == null) {
+        if(tipoCard.getText().toString().isEmpty() || tipoCard.getText().toString() == null)
             valid = false;
-        }
-        if(manaNumberCard.getText().toString().isEmpty() || manaNumberCard.getText().toString() == null) {
+        if(manaNumberCard.getText().toString().isEmpty() || manaNumberCard.getText().toString() == null)
             valid = false;
-        }
 
         return valid;
     }

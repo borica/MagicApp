@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -19,17 +16,12 @@ import com.android.volley.toolbox.Volley;
 import com.example.brcomboricagrid.adapter.CardAdapter;
 import com.example.brcomboricagrid.models.Card;
 import com.example.brcomboricagrid.util.AppConstants;
-import com.google.gson.Gson;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ListCardActivity extends AppCompatActivity {
@@ -42,11 +34,16 @@ public class ListCardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_card);
         getSupportActionBar().hide();
 
-        listCards = (ListView) findViewById(R.id.listCards);
-        mountCards();
+        listCards = findViewById(R.id.listCards);
+
+        try {
+            mountCards();
+        } catch (AuthFailureError authFailureError) {
+            authFailureError.printStackTrace();
+        }
     }
 
-    private void mountCards() {
+    private void mountCards() throws AuthFailureError {
 
         Log.i(this.getClass().getName(), "Inicio fluxo LIST card");
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -58,7 +55,7 @@ public class ListCardActivity extends AppCompatActivity {
                         Log.i(this.getClass().getName(), "MILESTONE: CHEGOU NO RESPONSE");
 
                         if(response != null) {
-                            ArrayList<Card> mountedCards = new ArrayList<Card>();
+                            ArrayList<Card> mountedCards = new ArrayList<>();
 
                             //GETTING JSON OBJS FROM RESPONSE
                             JSONObject reponseJson = new JSONObject(response);
@@ -90,7 +87,7 @@ public class ListCardActivity extends AppCompatActivity {
 
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
-                    HashMap<String, String> headers = new HashMap();
+                    HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
                     headers.put("Authorization", "9fc982d0-8c55-4ec6-81d8-7efa5410b0bf");
 
